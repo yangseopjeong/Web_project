@@ -4,42 +4,44 @@
     <meta charset="UTF-8">
     <title>Life Raid</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
     <script>
         var hover;
-        $(document).ready(function(){
+        var windowTop;
+        $(document).ready(function() {
             $(".sub_menu").hide();
-            $('.menu').hover(function(){
+            $('.menu').hover(function() {
                 //stop현재 진행하는 모든 애니매이션을 정지한다.
-				$('.sub_menu',this).stop().slideToggle("slow");
-                $(this).css("border-bottom","1px soild white");
-			});
+                $('.sub_menu', this).stop().slideToggle("slow");
+                $(this).css("border-bottom", "1px soild white");
+            });
         });
 
-        $(window).on("scroll",function(){
-            var windowTop=$(window).scrollTop();
-            if(windowTop!=0){
-                $("#mainMenu").css("background-color","black");
+        $(window).on("scroll", function() {
+            windowTop = $(window).scrollTop();
+            if (windowTop != 0) {
+                $("#mainMenu").css("background-color", "black");
+            } else if (windowTop == 0) {
+                $("#mainMenu").css("background-color", "transparent");
+                $("#mainMenu").mouseover(function() {
+                    $(this).css("background-color", "black");
+                });
+                $("#mainMenu").mouseout(function() {
+                    $(this).css("background-color", "transparent");
+                });
             }
-            else{
-                 $("#mainMenu").css("background-color","transparent");
-            }
-        });
-        $("#mainMenu").hover(function(){
-            $("#mainMenu:hover").css("background-color","black");
-        });
-        $("*:not(#mainMenu)").hover(function(){
-            
         });
     </script>
 </head>
+
 <body>
-<!--  전체를 감싸는 div-->
-   <div id="wrapper">
-<!--    header Start-->
+    <!--  전체를 감싸는 div-->
+    <div id="wrapper">
+        <!--    header Start-->
         <header>
-<!--    메인 메뉴 시작-->
+            <!--    메인 메뉴 시작-->
             <nav>
                 <ul id="mainMenu">
                     <li>
@@ -67,89 +69,83 @@
                 </ul>
             </nav>
         </header>
-<!--contents 시작-->
-        <div class="contents">
-<!-- Event Section  -->
-        <section id="events">
-            <div id="event_img">
-                <img src="imgs/event_slide_2.png" alt="" class="event_img">
-                <img src="imgs/event_slide_3.png" alt="" class="event_img">
-            </div>
+        <!--top_banner 시작-->
+        <div id="top_banner">
+            <!-- Event Section  -->
             <div id="eventsControl" class="rbtn_ctl">
                 <input type="radio" name="radio">
-            <span id="eventInfo">이번 이벤트는</span>
+                <span id="eventInfo">이번 이벤트는</span>
             </div>
             <div id="event_arrow">
                 <img src="imgs/left_arrow.png" alt="">
                 <img src="imgs/right_arrow.png" alt="">
             </div>
-        </section>
-<!--        guidePost-->
-        <section id="guidePost">
-            <h2>공략 게시판</h2>
-            <a href="">더보기</a>
-            <ul class="sub_post">
-                <li>
-                    <a href="">제목</a>
-                    <span class="date">작성 시간</span>
-                    <span class="writer">작성자</span>
-                </li>
-                <li>
-                    <a href="">다이어트 레이드 한달 끝장!!</a>
-                    <span class="date">11:12</span>
-                    <span class="writer">akwi123</span>
-                </li>
-                <li>
-                    <a href="">자격증 레이드 난 이렇게 했다.</a>
-                    <span class="date">11:11</span>
-                    <span class="writer">koile</span>
-                </li>
-                <li>
-                    <a href="">컴공과 취직 공략의 정석</a>
-                    <span class="date">11:10</span>
-                    <span class="writer">huiemdh</span>
-                </li>
-            </ul>
-<!--    partyPost -->
-        </section>
-        <section id="recent_party">
-            <h2>파티 모집 게시판</h2>
-            <a href="">더보기</a>
-            <ul class="sub_post">
-                <li>
-                    <a href="">제목</a>
-                    <span class="date">작성 시간</span>
-                    <span class="writer">작성자</span>
-                </li>
-                <li>
-                    <a href="">한달 10kg 감량 파티 모집</a>
-                    <span class="date">10:12</span>
-                    <span class="writer">djeij112</span>
-                </li>
-                <li>
-                    <a href="">공부팟 모집</a>
-                    <span class="date">09:11</span>
-                    <span class="writer">studyhard</span>
-                </li>
-                <li>
-                <a href="">야! 너두 TOEIC 900점 같이하자!!</a>
-                    <span class="date">08:10</span>
-                    <span class="writer">yanudo</span>
-                </li>
-            </ul>
-        </section>
-<!--     랭킹 판-->
-        <section id="ranking">
-            <h3>랭킹 현황</h3>
-            <ul>
-                <li></li>
-            </ul>
-        </section>
         </div>
-
+        <!--        guidePost-->
+        <div id="middle">
+            <section id="guidePost">
+                <h2>공략 게시판</h2>
+                <a href="">더보기</a>
+                <ul class="sub_post">
+                    <li>
+                        <a href="">제목</a>
+                        <span class="date">작성 시간</span>
+                        <span class="writer">작성자</span>
+                    </li>
+                    <li>
+                        <a href="">다이어트 레이드 한달 끝장!!</a>
+                        <span class="date">11:12</span>
+                        <span class="writer">akwi123</span>
+                    </li>
+                    <li>
+                        <a href="">자격증 레이드 난 이렇게 했다.</a>
+                        <span class="date">11:11</span>
+                        <span class="writer">koile</span>
+                    </li>
+                    <li>
+                        <a href="">컴공과 취직 공략의 정석</a>
+                        <span class="date">11:10</span>
+                        <span class="writer">huiemdh</span>
+                    </li>
+                </ul>
+                <!--    partyPost -->
+            </section>
+            <section id="recent_party">
+                <h2>파티 모집 게시판</h2>
+                <a href="">더보기</a>
+                <ul class="sub_post">
+                    <li>
+                        <a href="">제목</a>
+                        <span class="date">작성 시간</span>
+                        <span class="writer">작성자</span>
+                    </li>
+                    <li>
+                        <a href="">한달 10kg 감량 파티 모집</a>
+                        <span class="date">10:12</span>
+                        <span class="writer">djeij112</span>
+                    </li>
+                    <li>
+                        <a href="">공부팟 모집</a>
+                        <span class="date">09:11</span>
+                        <span class="writer">studyhard</span>
+                    </li>
+                    <li>
+                        <a href="">야! 너두 TOEIC 900점 같이하자!!</a>
+                        <span class="date">08:10</span>
+                        <span class="writer">yanudo</span>
+                    </li>
+                </ul>
+            </section>
+            <!--     랭킹 판-->
+            <section id="ranking">
+                <h3>랭킹 현황</h3>
+                <ul>
+                    <li></li>
+                </ul>
+            </section>
+        </div>
+    </div>
     <footer>
         <div id="company_info">주 life</div>
     </footer>
-    </div>
-</body>
-</html>
+</body></html>
